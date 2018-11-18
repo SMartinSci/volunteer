@@ -36,7 +36,7 @@ class EntriesController < ApplicationController
 
   get '/entries/:id' do
     if logged_in?
-      @entry = entry.find_by_id(params[:id])
+      @entry = Entry.find_by_id(params[:id])
       erb :'entries/show_entry'
     else
       redirect '/login'
@@ -45,7 +45,7 @@ class EntriesController < ApplicationController
 
   get '/entries/:id/edit' do
     if logged_in?
-      @entry = entry.find_by_id(params[:id])
+      @entry = Entry.find_by_id(params[:id])
       if @entry && @entry.user == current_user
         erb :'entries/edit'
       else
@@ -61,7 +61,7 @@ class EntriesController < ApplicationController
       if params[:description] == ""
         redirect "/entries/#{params[:id]}/edit"
       else
-        @entry = entry.find_by_id(params[:id])
+        @entry = Entry.find_by_id(params[:id])
         if @entry && @entry.user == current_user
           if @entry.update(description: params[:description])
             redirect  "/entries/#{@entry.id}"
@@ -79,7 +79,7 @@ class EntriesController < ApplicationController
 
   delete '/entries/:id/delete' do
     if logged_in?
-      @entry = entry.find_by_id(params[:id])
+      @entry = Entry.find_by_id(params[:id])
       if @entry && @entry.user == current_user
         @entry.delete
       end
