@@ -14,12 +14,14 @@
 ActiveRecord::Schema.define(version: 20181111222635) do
 
   create_table "entries", force: :cascade do |t|
-    t.string  "title"
-    t.string  "location"
-    t.string  "date"
-    t.string  "description"
-    t.integer "log_id"
-    t.integer "user_id"
+    t.string   "title"
+    t.string   "location"
+    t.string   "date"
+    t.string   "description"
+    t.integer  "log_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "logs", force: :cascade do |t|
