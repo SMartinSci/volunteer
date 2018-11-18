@@ -1,16 +1,19 @@
-<h1>Edit your entry</h1>
 
-<form action="/entries/<%= @entry.id %>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-   Name:<br>
-  <input type="text" name="title" value="<%= @entry.title %>"><br>
-   Title:<br>
-  <input type="text" name="location" value="<%= @entry.location %>"><br>
-   Location:<br>
-  <input type="text" name="date"  value="<%= @entry.date %>"><br>
-    Date:<br>
-  <input type="text" name="description" required="true" value="<%= @entry.description %>">
-  <br></br>
+    <h1>Edit your entry</h1>
+      <br />
+      <br />
+      <form action="/entries/<%= @entry.id %>" method="post">
+       
+        <input type="text" name="title" value="<%= @entry.title %>"><br>
+          Title:<br>
+        <input type="text" name="location" value="<%= @entry.location %>"><br>
+          Location:<br>
+        <input type="text" name="date"  value="<%= @entry.date %>"><br>
+          Date:<br>
+        <input type="text" name="description" value="<%= @entry.description %>"><br>
+          Description:<br>
+        <br />
+        <br />
 
-  <input type="submit" id="submit" value="Submit Changes">
-</form>
+        <input type="submit" id="submit" value="Submit Changes">
+      </form>

@@ -4,7 +4,7 @@
  <% if @user == current_user %>
  <h2> You have volunteered <%= "#{@user.entries.size}"%> time(s)</h2>
  <% else %>
- <h2>entries logged: <%= "#{@user.entries.size}" %></h2>
+ <h2> Entries logged: <%= "#{@user.entries.size}" %></h2>
 <% end %>
 
  <% @user.entries.each do |entry| %>

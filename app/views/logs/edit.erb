@@ -1,11 +1,10 @@
-<h1>Edit <%= @log.title %></h1>
+<h1>Edit your log</h1>
+  <br />
+  <br />
+    <form action="/logs/<%= @log.id %>" method="post">
 
-<form action="/logs/<%=@log.id %>" method="POST">
-  <label> Log Title </label>
-  <input type="text" name="title" value="<%=@log.title %>"> </br>
-
-  <label> Log Points </label>
-  <input type="text" name="points" value="<%=@log.points%>"> </br>
-
-  <input type="submit" value="Update">
-</form>
+    <input type="text" name="title" value="<%= @log.title %>"><br>
+    Title:<br>
+    <input type="submit" id="submit" value="Submit Changes">
+      
+    </form>
