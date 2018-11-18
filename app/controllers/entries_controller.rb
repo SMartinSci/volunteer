@@ -2,6 +2,8 @@ class EntriesController < ApplicationController
 
   get '/entries' do
     if logged_in?
+      @user = current_user
+      session[:user_id] = @user.id
       @entries = Entry.all
       erb :'entries/index'
     else
@@ -22,7 +24,7 @@ class EntriesController < ApplicationController
       if params[:description] == ""
         redirect "/entries/new"
       else
-        @entry = current_user.entries.build(description: params[:description])
+        @entry = current_user.entries.build(title: params[:title], description: params[:description], location: params[:location], date: params[:date])
         if @entry.save
           redirect "/entries/#{@entry.id}"
         else
@@ -36,8 +38,9 @@ class EntriesController < ApplicationController
 
   get '/entries/:id' do
     if logged_in?
+      @user = current_user
       @entry = Entry.find_by_id(params[:id])
-      erb :'entries/show_entry'
+      erb :'entries/show'
     else
       redirect '/login'
     end
@@ -63,7 +66,7 @@ class EntriesController < ApplicationController
       else
         @entry = Entry.find_by_id(params[:id])
         if @entry && @entry.user == current_user
-          if @entry.update(description: params[:description])
+          if @entry.update(title: params[:title], description: params[:description], location: params[:location], date: params[:date])
             redirect  "/entries/#{@entry.id}"
           else
             redirect "/entries/#{@entry.id}/edit"
@@ -89,4 +92,15 @@ class EntriesController < ApplicationController
     end
   end
 end
+  # helpers do 
+  #   def log_entry
+  #     @all_entries = [] 
+  #     current_user.entries.map do |entry|
+  #       if log.entries.include?(@entry) 
+  #         log.entries.map do |entry|
+  #           @all_entries << entry.name
+  #       end
+    #   end
+    # end
+
 

@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.find_by(:email => params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id	
-      redirect "/users/#{@user.id}"
+      redirect to '/entries'
     end	
   end	  
 

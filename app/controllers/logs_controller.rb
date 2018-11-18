@@ -1,23 +1,26 @@
 class LogsController < ApplicationController
     
     get '/logs/new' do
-        erb :'/logs/new'
+        if logged_in?
+            erb :'/logs/new'
+        else 
+            redirect to '/login'
+        end
     end
     
     post '/logs' do
         if logged_in?
-            @user = current_user
-            session[:user_id] = @user.id
-            @logs = log.all
-        erb :'/logs/index'
-
+            @log = Log.create(title: params[:title], points: params[:points])
+            @log.save
+            redirect to :"/logs/#{@log.id}"
         else
             redirect to '/login'
         end
     end
 
     get '/logs/:id' do
-        @log = Log.find(params[:id])
+        @user = current_user
+        @log = Log.find_by_id(params[:id])
         erb :'/logs/show'
     end
   end   
