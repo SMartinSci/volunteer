@@ -11,7 +11,7 @@ class EntriesController < ApplicationController
 
   get '/entries/new' do
     if logged_in?
-      erb :'entries/create_entry'
+      erb :'entries/new'
     else
       redirect '/login'
     end
@@ -47,7 +47,7 @@ class EntriesController < ApplicationController
     if logged_in?
       @entry = entry.find_by_id(params[:id])
       if @entry && @entry.user == current_user
-        erb :'entries/edit_entry'
+        erb :'entries/edit'
       else
         redirect '/entries'
       end

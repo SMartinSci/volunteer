@@ -31,20 +31,21 @@ class UsersController < ApplicationController
     @user = User.find_by(:email => params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id	
-      redirect to "/entries"	    
-    else	
       redirect "/users/#{@user.id}"
     end	
   end	  
 
   get '/logout' do
     if logged_in?
+      session.destroy
+      redirect to '/login'
+    else
       redirect to '/'
     end
   end
 
   get '/users/:id' do
-      @user = User.find_by_id(params[:id])
-          erb :'/users/show'
-    end
-  end	
+    @user = User.find_by_id(params[:id])
+      erb :'/users/show'
+  end
+end	
