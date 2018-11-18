@@ -24,12 +24,8 @@ class EntriesController < ApplicationController
       if params[:description] == ""
         redirect "/entries/new"
       else
-        @entry = current_user.entries.build(title: params[:title], description: params[:description], location: params[:location], date: params[:date])
-        if @entry.save
-          redirect "/entries/#{@entry.id}"
-        else
-          redirect "/entries/new"
-        end
+        @entry = Entry.create(title: params[:title], description: params[:description], location: params[:location], date: params[:date])
+        redirect "/entries/#{@entry.id}"
       end
     else
       redirect '/login'
@@ -48,14 +44,16 @@ class EntriesController < ApplicationController
 
   get '/entries/:id/edit' do
     if logged_in?
+      @user = current_user
       @entry = Entry.find_by_id(params[:id])
-      if @entry && @entry.user == current_user
+      # if @entry.user == current_user
         erb :'entries/edit'
-      else
-        redirect '/entries'
-      end
-    else
-      redirect '/login'
+    #   else
+    #     redirect '/entries'
+    #   end
+    # else
+      # redirect '/login'
+      # end
     end
   end
 
