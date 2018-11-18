@@ -2,13 +2,13 @@
 <h1><%="#{@user.username}" %>'s Volunteer Points</h1>
 
  <% if @user == current_user %>
- <h2> You have volunteered <%= "#{@user.entrys.size}"%> time(s)</h2>
+ <h2> You have volunteered <%= "#{@user.entries.size}"%> time(s)</h2>
  <% else %>
- <h2>Entrys logged: <%= "#{@user.entrys.size}" %></h2>
+ <h2>entries logged: <%= "#{@user.entries.size}" %></h2>
 <% end %>
 
- <% @user.entrys.each do |entry| %>
- <a href="/entrys/<%= entry.id %>"><h3><%= entry.username %></h3></a>
+ <% @user.entries.each do |entry| %>
+ <a href="/entries/<%= entry.id %>"><h3><%= entry.username %></h3></a>
  <% end %>
  <% if @user == current_user %>
-<h2> Ready to commit more volunteer entrys?</h2>
+<h2> Ready to commit more volunteer entries?</h2>

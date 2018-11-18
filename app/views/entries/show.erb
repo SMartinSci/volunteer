@@ -1,0 +1,15 @@
+SHOW PAGE FOR A VOLUNTEER ENTRY
+
+<p><%= @entries.title %>
+<p><%= @entries.location %>
+<p><%= @entries.date %>
+<p><%= @entries.description %>
+
+
+<% if @entry.user == @current_user %>
+<form method="post" action="/entries/<%=@entry.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Entry">
+</form>
+
+<a href="/entries/<%=@entry.id%>/edit">Edit Entry </a>
