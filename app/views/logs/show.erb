@@ -6,12 +6,18 @@
         <h2> Entries logged: <%= "#{@current_user.entries.size}" %></h2>
         <% end %>
 
+
+
         <label> Log Points </label>
         <input type="text" name="points"> </br>
         <h2> You have accumulated <%= "#{@current_user.entries.size}"%> point(s)</h2>
 
         <% @user.entries.each do |entry| %>
         <a href="/entries/<%= entry.id %>"><h3><%= entry.username %></h3></a>
+        <% end %>
+
+        <% @user.entries.each do |entry| %>
+        <a href="/entries/<%= entry.id %>"><h3><%= entry.timestamp %></h3></a>
         <% end %>
 
        <a href="/entries/new">Add Entry </a>
