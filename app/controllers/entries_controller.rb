@@ -2,7 +2,6 @@ class EntriesController < ApplicationController
 
   get '/entries' do
     if logged_in?
-      @user = current_user
       session[:user_id] = @user.id
       @entries = Entry.all
       erb :'entries/new'
@@ -34,7 +33,6 @@ class EntriesController < ApplicationController
 
   get '/entries/:id' do
     if logged_in?
-      @user = current_user
       @entry = Entry.find_by_id(params[:id])
       erb :'entries/show'
     else
@@ -44,7 +42,6 @@ class EntriesController < ApplicationController
 
   get '/entries/:id/edit' do
     if logged_in?
-      #@user = current_user
       @entry = Entry.find_by_id(params[:id])
        if @entry.user == current_user
         erb :'entries/edit'
