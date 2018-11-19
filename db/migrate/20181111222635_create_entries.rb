@@ -7,6 +7,7 @@ class CreateEntries < ActiveRecord::Migration
       t.string :description
       t.integer :log_id
       t.integer :user_id
+      t.timestamps
     end
   end
 end

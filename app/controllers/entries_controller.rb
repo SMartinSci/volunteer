@@ -5,15 +5,15 @@ class EntriesController < ApplicationController
       @user = current_user
       session[:user_id] = @user.id
       @entries = Entry.all
-      erb :'logs/new'
+      erb :'entries/new'
     else
-      redirect '/logs/new'
+      redirect '/entries/new'
     end
   end
 
   get '/entries/new' do
     if logged_in?
-      erb :'logs/new'
+      erb :'entries/new'
     else
       redirect '/login'
     end
@@ -24,7 +24,7 @@ class EntriesController < ApplicationController
       if params[:description] == ""
         redirect "/entries/new"
       else
-        @entry = Entry.create(title: params[:title], description: params[:description], location: params[:location], date: params[:date])
+        @entry = Entry.create(title: params[:title], description: params[:description], location: params[:location], date: params[:date], user_id: session[:user_id])
         redirect "/entries/#{@entry.id}"
       end
     else
@@ -44,16 +44,16 @@ class EntriesController < ApplicationController
 
   get '/entries/:id/edit' do
     if logged_in?
-      @user = current_user
+      #@user = current_user
       @entry = Entry.find_by_id(params[:id])
-      # if @entry.user == current_user
+       if @entry.user == current_user
         erb :'entries/edit'
-    #   else
-    #     redirect '/entries'
-    #   end
-    # else
-    #   redirect '/login'
-    #   end
+    #    else
+    #      redirect '/entries'
+    #    end
+    #  else
+    #    redirect '/login'
+        end
     end
   end
 
@@ -64,7 +64,7 @@ class EntriesController < ApplicationController
       else
         @entry = Entry.find_by_id(params[:id])
         if @entry && @entry.user == current_user
-          if @entry.update(title: params[:title], description: params[:description], location: params[:location], date: params[:date])
+          if @entry.update(title: params[:title], description: params[:description], location: params[:location], date: params[:date], user_id: session[:user_id])
             redirect  "/entries/#{@entry.id}"
           else
             redirect "/entries/#{@entry.id}/edit"
@@ -90,4 +90,5 @@ class EntriesController < ApplicationController
     end
   end
 end
+
 

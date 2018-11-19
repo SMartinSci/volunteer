@@ -10,10 +10,11 @@
         <input type="text" name="points"> </br>
         <h2> You have accumulated <%= "#{@current_user.entries.size}"%> point(s)</h2>
 
-
         <% @user.entries.each do |entry| %>
         <a href="/entries/<%= entry.id %>"><h3><%= entry.username %></h3></a>
         <% end %>
+
+       <a href="/entries/new">Add Entry </a>
       
     <h2> Ready to commit more volunteer entries?</h2>
 </div>

@@ -6,7 +6,7 @@ class LogsController < ApplicationController
             @user = current_user
             session[:user_id] = @user.id
             @entries = Entry.all 
-            erb :'/logs/new'
+            erb :'/logs/show'
         else 
             redirect to '/login'
         end
@@ -22,7 +22,7 @@ class LogsController < ApplicationController
     
     post '/logs' do
         if logged_in?
-            @log = Log.create(title: params[:title], points: params[:points])
+            @log = Log.create(title: params[:title], points: params[:points], user_id: session[:user_id])
             @log.save
             redirect to :"/logs/#{@log.id}"
         else
