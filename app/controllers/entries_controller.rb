@@ -5,15 +5,15 @@ class EntriesController < ApplicationController
       @user = current_user
       session[:user_id] = @user.id
       @entries = Entry.all
-      erb :'entries/index'
+      erb :'logs/new'
     else
-      redirect '/login'
+      redirect '/logs/new'
     end
   end
 
   get '/entries/new' do
     if logged_in?
-      erb :'entries/new'
+      erb :'logs/new'
     else
       redirect '/login'
     end
@@ -52,8 +52,8 @@ class EntriesController < ApplicationController
     #     redirect '/entries'
     #   end
     # else
-      # redirect '/login'
-      # end
+    #   redirect '/login'
+    #   end
     end
   end
 
@@ -90,15 +90,4 @@ class EntriesController < ApplicationController
     end
   end
 end
-  # helpers do 
-  #   def log_entry
-  #     @all_entries = [] 
-  #     current_user.entries.map do |entry|
-  #       if log.entries.include?(@entry) 
-  #         log.entries.map do |entry|
-  #           @all_entries << entry.name
-  #       end
-    #   end
-    # end
-
 

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
+ 
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       redirect to '/signup'
     else
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.find_by(:email => params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id	
-      redirect to '/entries'
+      redirect to '/entries/new'
     end	
   end	  
 

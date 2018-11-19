@@ -1,10 +1,13 @@
-<h1>Edit your log</h1>
-  <br />
-  <br />
-    <form action="/logs/<%= @log.id %>" method="post">
+ <div class="text-center">
+  <h1>Edit your log</h1>
+    <br />
+    <br />
+      <form action="/logs/<%= @log.id %>" method="post">
 
-    <input type="text" name="title" value="<%= @log.title %>"><br>
-    Title:<br>
-    <input type="submit" id="submit" value="Submit Changes">
-      
-    </form>
+      <input type="text" name="title" value="<%= @log.title %>"><br>
+      Title:<br>
+      <input type="submit" id="submit" value="Submit Changes">
+        
+      </form>
+  </div>
+

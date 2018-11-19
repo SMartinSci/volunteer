@@ -1,5 +1,17 @@
 class LogsController < ApplicationController
     
+
+    get '/logs' do
+        if logged_in? 
+            @user = current_user
+            session[:user_id] = @user.id
+            @entries = Entry.all 
+            erb :'/logs/new'
+        else 
+            redirect to '/login'
+        end
+    end
+
     get '/logs/new' do
         if logged_in?
             erb :'/logs/new'
