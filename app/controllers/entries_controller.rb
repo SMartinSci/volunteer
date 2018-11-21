@@ -6,7 +6,8 @@ class EntriesController < ApplicationController
       @entries = Entry.all
       erb :'entries/new'
     else
-      redirect '/entries/new'
+      flash[:index_message] = "Signup or login to access your volunteer entries."
+      redirect '/'
     end
   end
 
@@ -14,6 +15,7 @@ class EntriesController < ApplicationController
     if logged_in?
       erb :'entries/new'
     else
+      flash[:index_message] = "Signup or login to create a new volunteer entry."
       redirect '/login'
     end
   end
@@ -24,6 +26,7 @@ class EntriesController < ApplicationController
         redirect "/entries/new"
       else
         @entry = Entry.create(title: params[:title], description: params[:description], location: params[:location], date: params[:date], user_id: session[:user_id])
+        flash[:success] = "You have created a new entry!"
         redirect "/entries/#{@entry.id}"
       end
     else
@@ -37,6 +40,7 @@ class EntriesController < ApplicationController
       @entry = Entry.find_by_id(params[:id])
       erb :'entries/show'
     else
+      flash[:index_message] = "Sign up or login to access entries."
       redirect '/login'
     end
   end
@@ -45,14 +49,15 @@ class EntriesController < ApplicationController
     if logged_in?
        @entry = Entry.find_by_id(params[:id])
        if @entry.user_id == current_user.id
-        erb :'entries/edit'
+          erb :'entries/edit'
        else
-       redirect '/entries'
+          flash[:dream_index] = "You cannot edit an entry that does not belong to you."
+          redirect '/entries'
        end
-    else redirect '/login'
+    else 
+      redirect '/login'
     end
   end
-
 
   patch '/entries/:id' do
     if logged_in?
@@ -62,11 +67,13 @@ class EntriesController < ApplicationController
         @entry = Entry.find_by_id(params[:id])
         if @entry.user_id == current_user.id
           if @entry.update(title: params[:title], description: params[:description], location: params[:location], date: params[:date], user_id: session[:user_id])
+            flash[:success] = "You have successfully edited this entry."
             redirect  "/entries/#{@entry.id}"
           else
             redirect "/entries/#{@entry.id}/edit"
           end
         else
+          flash[:error] = "You cannot edit an entry that does not belong to you."
           redirect '/entries'
         end
       end
@@ -80,10 +87,11 @@ class EntriesController < ApplicationController
       @entry = Entry.find_by_id(params[:id])
       if @entry && @entry.user == current_user
         @entry.delete
-        flash[:true] = "Successfully deleted entry."
+        flash[:true] = "You have permanently deleted this entry."
       end
       redirect '/entries'
     else
+      flash[:error] = "You are not authorized to delete this entry."
       redirect '/login'
     end
   end

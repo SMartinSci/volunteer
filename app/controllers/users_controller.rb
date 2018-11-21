@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   post '/signup' do
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
+      flash[:error] = "You must fill out all fields to sign up."
       redirect to '/signup'
     else
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
@@ -32,12 +33,16 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id	
       redirect to '/logs'
+    else
+      flash[:error] = "Invalid email address or password. Please try again."
+      redirect to '/login'
     end	
   end	  
 
   get '/logout' do
     if logged_in?
       session.destroy
+      flash[:success] = "You have been logged out of your account."
       redirect to '/login'
     else
       redirect to '/'
