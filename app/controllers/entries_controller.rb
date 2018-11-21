@@ -44,7 +44,6 @@ class EntriesController < ApplicationController
   get '/entries/:id/edit' do
     if logged_in?
        @entry = Entry.find_by_id(params[:id])
-        # binding.pry
        if @entry.user_id == current_user.id
         erb :'entries/edit'
        else
