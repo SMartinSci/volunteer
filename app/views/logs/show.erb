@@ -1,26 +1,23 @@
  <div class="text-center">
     <h1><%="#{@user.username}" %>'s Volunteer Points</h1>
         <% if @user == current_user %>
-        <h2> You have volunteered <%= "#{@current_user.entries.size}"%> time(s)</h2>
+        <br />
+        <h3> You have volunteered <%= "#{@current_user.entries.size}"%> time(s)</h2>
         <% else %>
-        <h2> Entries logged: <%= "#{@current_user.entries.size}" %></h2>
+        <h3> Entries logged: <%= "#{@current_user.entries.size}" %></h2>
         <% end %>
-
-
-
-        <label> Log Points </label>
-        <input type="text" name="points"> </br>
-        <h2> You have accumulated <%= "#{@current_user.entries.size}"%> point(s)</h2>
-
+        <br />
+        <br />
+        <h3> Total Reward point(s) <%= "#{@current_user.entries.size}"%></h2>
         <% @user.entries.each do |entry| %>
         <a href="/entries/<%= entry.id %>"><h3><%= entry.username %></h3></a>
         <% end %>
-
+        <br />
         <% @user.entries.each do |entry| %>
-        <a href="/entries/<%= entry.id %>"><h3><%= entry.timestamp %></h3></a>
+        <h2><a href="/entries/<%= entry.id %>"><h3><%= entry.created_at %></h3></a></h2>
         <% end %>
-
-       <a href="/entries/new">Add Entry </a>
-      
-    <h2> Ready to commit more volunteer entries?</h2>
+        <br />
+        <h2> Ready to commit more volunteer entries?</h2>
+        <br />
+    <h3><a href="/entries/new">Add Journal Entry </a></h3>
 </div>

@@ -3,10 +3,10 @@
     <br />
     <br />
       <% @entries.each do |entry| %>
-        <%= entry.title %> <br />
-        <%= entry.location %><br />
-        <%= entry.date %> <br />
-        <%= entry.description %> <br />
+        <p><%= entry.title %></p><br />
+        <p><%= entry.location %></p><br />
+        <p><%= entry.date %></p> <br />
+        <p><%= entry.description %></p> <br />
         <br />
         <br />
         <a href="/entries/<%=entry.id%>/edit">Edit</a>

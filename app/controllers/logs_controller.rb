@@ -7,7 +7,7 @@ class LogsController < ApplicationController
             @entries = Entry.all 
             erb :'/logs/show'
         else 
-            flash[:index_message] = "Signup or login to access entries."
+            flash[:failure] = "Signup or login to access log."
             redirect to '/login'
         end
     end
@@ -16,7 +16,7 @@ class LogsController < ApplicationController
         if logged_in?
             erb :'/logs/new'
         else 
-            flash[:index_message] = "Signup or login to create a new entry."
+            flash[:failure] = "Signup or login to create a new entry."
             redirect to '/login'
         end
     end
@@ -24,9 +24,10 @@ class LogsController < ApplicationController
     post '/logs' do
         if logged_in?
             @log = Log.create(title: params[:title], points: params[:points], user_id: session[:user_id])
-            redirect to :"/logs/#{@log.id}"
+            redirect to :'/entries'
+            # redirect to :"/logs/#{@log.id}"
         else
-            flash[:index_message] = "Signup or login to create a new entry."
+            flash[:failure] = "Signup or login to create a new entry."
             redirect to '/login'
         end
     end
@@ -34,10 +35,12 @@ class LogsController < ApplicationController
     get '/logs/:id' do
         if logged_in?
             @log = Log.find_by_id(params[:id])
-            @user = User.find(@log.user_id)
-            erb :'/logs/show'
+            # @user = User.find(@log.user.id)
+            # erb :'/logs/show'
+            redirect to :'/entries'
         else
-            flash[:index_message] = "Sign up or login to access entries."
+            flash[:failure] = "Sign up or login to access entries."
             redirect '/login'
-    end
-  end   
+        end
+    end 
+end  
