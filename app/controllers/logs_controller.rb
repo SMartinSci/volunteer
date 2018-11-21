@@ -35,9 +35,8 @@ class LogsController < ApplicationController
     get '/logs/:id' do
         if logged_in?
             @log = Log.find_by_id(params[:id])
-            # @user = User.find(@log.user.id)
-            # erb :'/logs/show'
-            redirect to :'/entries'
+            @user = User.find(current_user.id)
+            erb :'/logs/show'
         else
             flash[:failure] = "Sign up or login to access entries."
             redirect '/login'

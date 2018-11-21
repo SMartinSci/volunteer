@@ -34,6 +34,12 @@ class EntriesController < ApplicationController
     end
   end
 
+  get '/entries/index' do
+    @entry = Entry.find_by_id(params[:id])
+    @entries = Entry.all
+    erb :'/entries/index'
+  end
+
   get '/entries/:id' do
     if logged_in?
       @user = current_user
@@ -74,13 +80,15 @@ class EntriesController < ApplicationController
           end
         else
           flash[:failure] = "You cannot edit an entry that does not belong to you."
-          redirect '/entries'
+          redirect '/login'
         end
       end
     else
       redirect '/login'
     end
   end
+
+
 
   delete '/entries/:id/delete' do
     if logged_in?
