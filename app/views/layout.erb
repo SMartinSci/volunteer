@@ -9,6 +9,7 @@
 	</head>
 	<body class="is-preload">
 
+
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -18,7 +19,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+									<a href="index.html" class="logo"><strong>Charlottesville</strong> VA</a>
 									<ul class="icons">
 										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -32,11 +33,11 @@
 								<section id="banner">
 									<div class="content">
 										<header>
-											<h1>Hi, I’m Editorial<br />
-											by HTML5 UP</h1>
-											<p>A free and fully responsive site template</p>
+											<h1>Welcome to our Volunteer Community<br /></h1>
+											<h3>by Sherry Martin</h3>
+											<p>Sponsored by Cville Businesses near you</p>
 										</header>
-										<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+										<p>Volunteering benefits community members in a variety of ways and Charlottesville businesses want to support your efforts. By adding entries to this app, you accumulate points that can then be redeemed for coupons at local restaurants, eateries, and retailers downtown. </p>
 										<ul class="actions">
 											<li><a href="#" class="button big">Learn More</a></li>
 										</ul>
@@ -49,35 +50,28 @@
 							<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>Erat lacinia</h2>
+										<h2>Pages</h2>
 									</header>
 									<div class="features">
 										<article>
 											<span class="icon fa-diamond"></span>
 											<div class="content">
-												<h3>Portitor ullamcorper</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 											</div>
-										</article>
-										<article>
-											<span class="icon fa-paper-plane"></span>
-											<div class="content">
-												<h3>Sapien veroeros</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon fa-rocket"></span>
-											<div class="content">
-												<h3>Quam lorem ipsum</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon fa-signal"></span>
-											<div class="content">
-												<h3>Sed magna finibus</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										
+											<div class="error">
+												<% if flash[:failure] %>
+													<div id="flash" class="alert alert-danger text-center">
+														<%= flash[:failure] %>
+													</div>
+												<% end %>
+												<% if flash[:success] %>
+													<div id="flash" class="alert alert-success text-center">
+														<%= flash[:success] %>
+													</div>
+											<% end %>
+											<%= yield %>
+			
+									
 											</div>
 										</article>
 									</div>
@@ -160,32 +154,17 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
+										<li><a href="/">Welcome</a></li>
+										<li><a href="/signup">Sign Up</a></li>
+										<li><a href="elements.html">Logs</a></li>
 										<li>
-											<span class="opener">Submenu</span>
+											<span class="opener">Entries Submenu</span>
 											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
+												<li><a href="#">New</a></li>
+												<li><a href="#">Edit</a></li>
+												<li><a href="#">Show</a></li>
+												<li><a href="#">View All Entries</a></li>
 											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
 									</ul>
 								</nav>
 
@@ -229,7 +208,7 @@
 
 							<!-- Footer -->
 								<footer id="footer">
-									<p class="copyright">&copy; VolunteerApp. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+									<p class="copyright">&copy; VolunteerApp. All rights reserved <a href="https://unsplash.com"></a> <a href="https://html5up.net"></a></p>
 								</footer>
 
 						</div>
@@ -243,19 +222,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
-		<div class="error">
-			<% if flash[:failure] %>
-				<div id="flash" class="alert alert-danger text-center">
-					<%= flash[:failure] %>
-				</div>
-			<% end %>
-			<% if flash[:success] %>
-				<div id="flash" class="alert alert-success text-center">
-					<%= flash[:success] %>
-				</div>
-			<% end %>
-			<%= yield %>
 
 
 	</body>
