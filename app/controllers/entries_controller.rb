@@ -88,8 +88,6 @@ class EntriesController < ApplicationController
     end
   end
 
-
-
   delete '/entries/:id/delete' do
     if logged_in?
       @entry = Entry.find_by_id(params[:id])
