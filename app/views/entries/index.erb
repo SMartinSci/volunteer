@@ -1,5 +1,6 @@
-   <div class="text-center">
-    </h1>INDEX PAGE FOR VOLUNTEER ENTRIES</h1>
+    <br /> <br />
+    <div class="text-center">
+    <h2>INDEX PAGE FOR VOLUNTEER ENTRIES</h2>
     <br />
     <br />
       <% @entries.each do |entry| %>
@@ -7,15 +8,7 @@
         <p><%= entry.location %></p><br />
         <p><%= entry.date %></p> <br />
         <p><%= entry.description %></p> <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <a href="/entries/<%=entry.id%>/edit">Edit</a>
+        <br />
       <% end %> 
-      
     </div>
