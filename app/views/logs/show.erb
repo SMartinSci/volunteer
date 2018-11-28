@@ -1,6 +1,6 @@
   		<header>
 			<h1><%="#{@user.username}" %>'s Volunteer Points</h1>
-		</header>
+        </header>
 		    
         <div class="text-center">
 
@@ -15,6 +15,7 @@
         <h3> Total Reward point(s) <%= "#{@current_user.entries.size}"%></h2>
         <% @user.entries.each do |entry| %>
         <a href="/entries/<%= entry.id %>"><h3><%= entry.username %></h3></a>
+
         <% end %>
         <br />
         <% @user.entries.each do |entry| %>
@@ -24,6 +25,6 @@
         <h2> Ready to commit more volunteer entries?</h2>
         <br />
         <ul class="actions">
-			<li><a href="/entries/new" class="button">Add Journal Entry</a></li>
-		</ul>
+            <li><a href="/entries/new" class="button">Add Journal Entry</a></li>
+       	</ul>
 </div>
