@@ -42,9 +42,10 @@ class EntriesController < ApplicationController
 
   get '/entries/:id' do
     if logged_in?
-      @user == current_user
+      @user = current_user
       @entry = Entry.find_by_id(params[:id])
-      erb :'entries/show'
+      @entries = Entry.all
+      erb :'/entries/show'
     else
       flash[:failure] = "Sign up or login to access entries."
       redirect '/login'

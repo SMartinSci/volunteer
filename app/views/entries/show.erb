@@ -2,10 +2,11 @@
   <h1>Your Volunteer Entry </h1>
   <br />  
   <br />
-    <p><%= @current_user.entry.title %></p>
-    <p><%= @current_user.entry.location %></p>
-    <p><%= @current_user.entry.date %></p>
-    <p><%= @current_user.entry.description %></p>
+    <p><%= @entry.title %></p>
+    <p><%= @entry.location %></p>
+    <p><%= @entry.date %></p>
+    <p><%= @entry.description %></p>
+  
 
     <% if current_user %>
     <form method="post" action="/entries/<%=@entry.id%>/delete">
