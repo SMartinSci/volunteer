@@ -27,6 +27,7 @@ class EntriesController < ApplicationController
         redirect "/entries/new"
       else
         @entry = Entry.create(title: params[:title], description: params[:description], location: params[:location], date: params[:date], user_id: session[:user_id])
+        binding.pry
         flash[:success] = "You have created a new entry!"
         redirect "/entries/#{@entry.id}"
       end
@@ -36,7 +37,7 @@ class EntriesController < ApplicationController
   end
 
   get '/entries/index' do
-    @entry = Entry.find(params[:id])
+    @entry = Entry.find_by_id(params[:id])
     @entries = Entry.all
     erb :'/entries/index'
   end
