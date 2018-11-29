@@ -1,10 +1,10 @@
 # Charlottesville Community Volunteer Log Application
 
-Volunteer is a CRUD, Model-View-Controller web application using the Sinatra framework. This application  allows a user the ability to create an account, add volunteer entries to their log and edit volunteer entries. A volunteer has many entries and a log and it's entries belongs to a user; entries and logs cannot be edited by other users. 
+Volunteer is a CRUD (Create, Read, Update, and Delete), Model-View-Controller web application using the Sinatra framework. The Front-end of the application is styled with Javascript, HTML5 + CSS3 using a modified version of a HTML5Up responsive template design. The Charlottesville Community Volunteer application allows a user the ability to create an account, add and edit their own volunteer entries and view all users' volunteer entries. A user has many entries and entries belongs to a user. For user authentication, username and password validators were created with a combination of Ruby and RegEx. Logged in users can create entries and edit or delete their entries.
 
 ## Installation
 
-You can install this app by running in your terminal git clone git@github.com:smartinsci/volunteer.git
+You can install this app by running in your terminal git clone 'git@github.com:smartinsci/volunteer.git'
 
 ## Usage
 
