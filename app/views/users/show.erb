@@ -16,11 +16,8 @@
         <br />
         <h3> Total Reward point(s) <%= "#{@user.entries.size}"%></h3>
         <% @user.entries.each do |entry| %>
-        <a href="/entries/<%= entry.id %>"><h3><%= entry.user.username %></h3></a>
-        <% end %>
-        <br />
-        <% @user.entries.each do |entry| %>
-        <h2><a href="/entries/<%= entry.id %>"><%= entry.created_at %></a></h2>
+        <h4>Created at: <%=entry.created_at.strftime('%A, %b %d, %Y')%> </h4>
+        <a href="/entries/<%=entry.id%>"><%=entry.title%></a>
         <% end %>
         <br />
         <h2> Ready to commit more volunteer entries?</h2>
