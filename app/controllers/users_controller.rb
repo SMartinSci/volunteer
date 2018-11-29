@@ -39,6 +39,12 @@ class UsersController < ApplicationController
     end	
   end	  
 
+  get '/users/:id' do
+    @user = User.find_by_id(params[:id]) 
+    @entries = @user.entries
+      erb :'/users/show'
+  end
+
   get '/logout' do
     if logged_in?
       session.destroy
@@ -49,8 +55,4 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/users/:id' do
-    @user = User.find_by_id(params[:id])
-      erb :'/users/show'
-  end
 end	

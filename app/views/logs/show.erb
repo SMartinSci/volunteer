@@ -9,17 +9,15 @@
         <h3> You have volunteered <%= "#{@current_user.entries.size}"%> time(s)</h2>
         <% else %>
         <h3> Entries logged: <%= "#{@user.entries.size}" %></h2>
-
         <% end %>
         <br />
         <br />
         <h3> Total Reward point(s) <%= "#{@user.entries.size}"%></h2>
         <% @user.entries.each do |entry| %>
         <a href="/entries/<%= entry.id %>"><h3><%= entry.username %></h3></a>
-
         <% end %>
         <br />
-        <% @user.entries.each do |entry| %>
+        <%= @user.entries.each do |entry| %>
         <h2><a href="/entries/<%= entry.id %>"><h3><%= entry.created_at %></h3></a></h2>
         <% end %>
         <br />
