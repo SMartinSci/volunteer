@@ -46,7 +46,6 @@ class EntriesController < ApplicationController
     if logged_in?
       @user = current_user
       @entry = Entry.find_by_id(params[:id])
-      @entries = Entry.all
       erb :'/entries/show'
     else
       flash[:failure] = "Sign up or login to access entries."
@@ -58,7 +57,7 @@ class EntriesController < ApplicationController
     if logged_in?
        @entry = Entry.find_by_id(params[:id])
        if @entry.user_id == current_user.id
-          erb :'entries/edit'
+          erb :'/entries/edit'
        else
           flash[:failure] = "You cannot edit an entry that does not belong to you."
           redirect '/entries'
