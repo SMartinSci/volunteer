@@ -3,6 +3,7 @@ class EntriesController < ApplicationController
   get '/entries' do
     if logged_in?
       # session[:user_id] = @user.id
+      @user = current_user
       @entries = Entry.all
       erb :'entries/new'
     else
@@ -35,7 +36,7 @@ class EntriesController < ApplicationController
   end
 
   get '/entries/index' do
-    @entry = Entry.find_by_id(params[:id])
+    @entry = Entry.find(params[:id])
     @entries = Entry.all
     erb :'/entries/index'
   end
