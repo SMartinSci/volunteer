@@ -4,7 +4,7 @@ Volunteer is a CRUD (Create, Read, Update, and Delete), Model-View-Controller we
 
 ## Installation
 
-You can install this app by running in your terminal git clone [link](git@github.com:SMartinSci/volunteer.git)
+You can install this app by running in your terminal git clone [git@github.com:SMartinSci/volunteer.git](git@github.com:SMartinSci/volunteer.git)
 
 ## Usage
 
