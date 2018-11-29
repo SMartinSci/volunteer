@@ -1,5 +1,5 @@
 class LogsController < ApplicationController
-    
+    require 'pry'
     get '/logs' do
         if logged_in? 
             @user = current_user
@@ -36,6 +36,7 @@ class LogsController < ApplicationController
         if logged_in?
             @log = Log.find_by_id(params[:id])
             @user = User.find(current_user.id)
+            binding.pry
             erb :'/logs/show'
         else
             flash[:failure] = "Sign up or login to access entries."

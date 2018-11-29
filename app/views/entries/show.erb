@@ -6,8 +6,7 @@
     <p><%= @entry.location %></p>
     <p><%= @entry.date %></p>
     <p><%= @entry.description %></p>
-  
-
+    
     <% if current_user %>
     <form method="post" action="/entries/<%=@entry.id%>/delete">
       <input id="hidden" type="hidden" name="_method" value="DELETE">

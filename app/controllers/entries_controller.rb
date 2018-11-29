@@ -1,8 +1,7 @@
 class EntriesController < ApplicationController
-
+require 'pry'
   get '/entries' do
     if logged_in?
-      # session[:user_id] = @user.id
       @user = current_user
       @entries = Entry.all
       erb :'entries/new'
@@ -27,7 +26,6 @@ class EntriesController < ApplicationController
         redirect "/entries/new"
       else
         @entry = Entry.create(title: params[:title], description: params[:description], location: params[:location], date: params[:date], user_id: session[:user_id])
-        binding.pry
         flash[:success] = "You have created a new entry!"
         redirect "/entries/#{@entry.id}"
       end
