@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'/users/signup'
     else
-      redirect to '/logs'
+      redirect to '/entries'
     end
   end
 
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       @user.save
       session[:user_id] = @user.id
-      redirect to '/logs'
+      redirect to '/entries'
     end
   end
 
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'users/login'
     else
-      redirect to '/logs'
+      redirect to '/entries'
     end
   end
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.find_by(:email => params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id	
-      redirect to '/logs'
+      redirect to '/entries'
     else
       flash[:failure] = "Invalid email address or password. Please try again."
       redirect to '/login'

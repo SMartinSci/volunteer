@@ -1,9 +1,5 @@
 class Entry < ActiveRecord::Base
 
-  belongs_to :log
-
-  def user
-    self.log.user
-  end
+  belongs_to :user
 
 end
