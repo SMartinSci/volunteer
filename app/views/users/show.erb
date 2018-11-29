@@ -6,8 +6,9 @@
     <h4><%= @user.email %></h4>
 
     <% @user.entries.each do |entry| %>
-    <a href="/entries/<%= entry.id %>"><h3><%= entry.name %></h3></a>
+        <h3><a href="/entries/<%= entry.id %>"><%= entry.title %></a></h3>
     <% end %>
+     <%# binding.pry %>
 
 </div>
 

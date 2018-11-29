@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   get '/signup' do
     if !logged_in?
       erb :'/users/signup'
@@ -41,6 +40,7 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
     @user = User.find_by_id(params[:id]) 
+
     @entries = @user.entries
       erb :'/users/show'
   end
