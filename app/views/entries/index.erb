@@ -2,13 +2,12 @@
     <div class="text-center">
     <h2>All Charlottesville Volunteer Entries</h2>
     <br />
-    <br />
 
       <% @entries.each do |entry| %>
         <h4>Title: <%= entry.title %></h4>
         <h4>Location: <%= entry.location %></h4>
         <h4>Date: <%= entry.date %></h4>
-        <h4>Description: <%= entry.description %></h4><br />
+        <h4>Description: <%= entry.description %></h4>
         <a href="/entries/<%=entry.id%>/edit">Edit</a><br />
         <br />
         <br />
