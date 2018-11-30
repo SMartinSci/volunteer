@@ -92,7 +92,6 @@ require 'pry'
     if logged_in?
       @entry = Entry.find_by_id(params[:id])
       if @entry.user_id == current_user.id
-        # @entry && @entry.user == current_user
         @entry.delete
         flash[:failure] = "You have permanently deleted this entry."
       end

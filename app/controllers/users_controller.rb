@@ -12,8 +12,7 @@ class UsersController < ApplicationController
       flash[:failure] = "You must fill out all fields to sign up."
       redirect to '/signup'
     else
-      @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
-      @user.save
+      @user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
       session[:user_id] = @user.id
       redirect to '/entries'
     end
@@ -33,14 +32,14 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id	
       redirect to '/entries'
     else
-      flash[:failure] = "Invalid email address or password. Please try again."
+      flash[:failure] = "If you aren't signed up, please Sign Up first. 
+      If you are signed up and you reached this page, you entered an invalid email address or password. Please try again."
       redirect to '/login'
     end	
   end	  
 
   get '/users/:id' do
     @user = User.find_by_id(params[:id]) 
-
     @entries = @user.entries
       erb :'/users/show'
   end
