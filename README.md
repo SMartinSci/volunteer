@@ -8,7 +8,7 @@ You can install this app by running in your terminal git clone [git@github.com:S
 
 ## Usage
 
-After cloning, change directory to Volunteer $ cd volunteer, and run the following:
+After cloning, change directory to Volunteer 'cd volunteer', and run the following:
 
     $ bundle install
     $ rake db:migrate
