@@ -2,7 +2,7 @@
 
 Volunteer is a CRUD (Create, Read, Update, and Delete), Model-View-Controller web application using the Sinatra framework. The Front-end of the application is styled with Javascript, HTML5 + CSS3 using a modified version of a HTML5Up responsive template design. The Charlottesville Community Volunteer application allows a user the ability to create an account, add and edit their own volunteer entries and view all users' volunteer entries. A user has many entries and entries belongs to a user. For user authentication, username and password validators were created with a combination of Ruby and RegEx. Logged in users can create entries and edit or delete their entries. 
 
-For more information on how to use the app, watch my walkthrough [video] (http://youtu.be/bdTiA8WLf-s). And for more information on how this app was created, you can view my [blogpost](http://sherrymartin.info/sinatra_mvc_application_volunteer).
+For more information on how to use the app, watch my walkthrough [video] (http://youtube/bdTiA8WLf-s). And for more information on how this app was created, you can view my [blogpost](http://sherrymartin.info/sinatra_mvc_application_volunteer).
 
 ## Installation
 
