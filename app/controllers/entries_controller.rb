@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-require 'pry'
+
   get '/entries' do
     if logged_in?
       @user = current_user
