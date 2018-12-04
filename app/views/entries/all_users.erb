@@ -4,7 +4,6 @@
     <br />
 
       <% @entries.each do |entry| %>
-        <h4><a href="/entries/<%= entry.id %>"></a></h4>
         <h4>Title: <%= entry.title %></h4>
         <h4>Location: <%= entry.location %></h4>
         <h4>Date: <%= entry.date %></h4>
@@ -14,5 +13,3 @@
         <br />
       <% end %> 
     </div>
-
-   
