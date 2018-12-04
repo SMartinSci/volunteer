@@ -6,7 +6,7 @@ class CreateEntries < ActiveRecord::Migration
       t.string :date
       t.string :description
       t.integer :user_id
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
