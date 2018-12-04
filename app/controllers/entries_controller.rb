@@ -1,14 +1,8 @@
 class EntriesController < ApplicationController
 
   get '/entries' do
-    # if logged_in?
-      # @user = current_user
       @entries = Entry.all
       erb :'entries/index'
-    # else
-    #   flash[:failure] = "Signup or login to access your volunteer entries."
-    #   redirect '/'
-    # end
   end
 
   get '/entries/new' do
@@ -34,14 +28,7 @@ class EntriesController < ApplicationController
     end
   end
 
-  # get '/entries/index' do
-  #   @entry = Entry.find_by_id(params[:id])
-  #   @entries = Entry.all
-  #   erb :'/entries/index'
-  # end
-
   get '/entries/all_users' do
-    # @entry = Entry.find_by_id(params[:id])
     @entries = Entry.all
     erb :'/entries/all_users'
   end

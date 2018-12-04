@@ -6,15 +6,14 @@
       <br />
       <form action="/entries/<%= @entry.id %>" method="post">
       <input id="hidden" type="hidden" name="_method" value="patch">
-       
+        Title:<br>
         <input type="text" name="title" value="<%= @entry.title %>"><br>
-          Title:<br>
+        Location:<br> 
         <input type="text" name="location" value="<%= @entry.location %>"><br>
-          Location:<br>
+        Date:<br>
         <input type="text" name="date"  value="<%= @entry.date %>"><br>
-          Date:<br>
+        Description:<br>
         <input type="text" name="description" value="<%= @entry.description %>"><br>
-          Description:<br>
         <br />
         <br />
 
