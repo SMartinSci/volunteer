@@ -24,12 +24,13 @@ class ApplicationController < Sinatra::Base
     def current_user
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end 
-
-    def redirect_if_not_logged_in
-      if !logged_in?
-        flash[:failure] = "Sign up or login to access entries."
-        redirect '/login'
-      end
-    end
   end
 end
+
+    # def redirect_if_not_logged_in
+    #   if !logged_in?
+    #     flash[:failure] = "Sign up or login to access entries."
+    #     redirect '/login'
+    #   end
+    # end
+

@@ -6,9 +6,15 @@ class EntriesController < ApplicationController
   end
 
   get '/entries/new' do
-    erb :'entries/new'
-    redirect_if_not_logged_in
+    if logged_in?
+      erb :'entries/new'
+    else
+      flash[:failure] = "Signup or login to create a new volunteer entry."
+      redirect '/login'
+    end
   end
+    # redirect_if_not_logged_in
+
 
   post '/entries' do
     if logged_in?
